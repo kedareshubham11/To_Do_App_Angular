@@ -1,0 +1,30 @@
+<div class="div">
+<!--Titile-->
+<h1 [innerText]="title"></h1>
+
+
+<!-- add task-->
+<input type="text" class="input" placeholder="{{showPlaceHolder}}" [(ngModel)]="inputTask">
+<button class="button" (click)="addTask(inputTask)">Add Task</button>
+
+
+
+<!-- view Task-->
+<br> <h4>To Do List : </h4>
+<span id="empty" > List is Empty. </span>
+<table class="list">
+        <tr *ngFor="let taskIterator of toDoTaskList">
+                <td>
+                        <input type="checkbox" [(ngModel)]="taskIterator.taskStatus" [disabled]="taskIterator.taskStatus">
+                </td>
+
+                <td>
+                        {{ taskIterator.taskDesc }}
+                </td>
+
+                <td>
+                        <a href="#"><i class="material-icons" style="color:red" (click)="removeTask(taskIterator.uniqueId)">delete_forever</i></a>
+                </td>
+        </tr>
+</table>
+</div>
